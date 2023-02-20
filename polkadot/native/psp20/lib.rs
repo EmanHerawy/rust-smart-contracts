@@ -77,6 +77,11 @@ mod psp20 {
        pub fn name(&self) -> String {
            self.name.clone()
        }
+      /// Returns the token name.
+       #[ink(message)]
+       pub fn admin(&self) -> AccountId {
+           self.admin
+       }
       /// Returns the token symbole.
        #[ink(message)]
        pub fn symbol(&self) -> String {

@@ -35,6 +35,7 @@ impl PSP22 for Contract {}
                 instance
                     ._mint_to(instance.env().caller(), total_supply)
                     .expect("Should mint");
+                instance._init_with_owner(instance.env().caller());
             })
         }
     }}
