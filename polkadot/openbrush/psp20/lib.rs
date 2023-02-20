@@ -7,6 +7,7 @@ mod psp20 {
  use ink_storage::traits::SpreadAllocate;
     use openbrush::{
         contracts::psp22::*,
+        contracts::ownable::*,
         traits::{
             Storage,
             // String,
@@ -21,7 +22,10 @@ mod psp20 {
         /// Stores a single `bool` value on the storage.
        #[storage_field]
         psp22: psp22::Data,
+        #[storage_field]
+        ownable: ownable::Data,
     }
+impl Ownable for Contract {}
 impl PSP22 for Contract {}
     impl Contract {
         /// Constructor that initializes the `bool` value to the given `init_value`.
