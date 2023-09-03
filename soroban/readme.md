@@ -1,0 +1,1 @@
+to build `soroban contract build`
