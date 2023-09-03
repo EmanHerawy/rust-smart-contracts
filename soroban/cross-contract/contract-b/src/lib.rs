@@ -1,5 +1,5 @@
 #![no_std]
-use soroban_sdk::{contract, contractimpl, symbol_short,Address,  Env, Symbol};
+use soroban_sdk::{contract, contractimpl, symbol_short,Address,Val, Vec, Env, Symbol};
 
 mod contract_a {
     soroban_sdk::contractimport!(
@@ -28,6 +28,12 @@ impl ContractB {
         let contract = contract_a::Client::new(&env, &contract_address);
 
          contract.get()
+    }
+    pub fn a_by_invoke(env: Env,contract_address:Address, fn_sig:Symbol,
+        args: Vec<Val>) ->Val {
+        let res: Val = env.invoke_contract(&contract_address, &fn_sig, args);
+
+        res
     }
 }
 
