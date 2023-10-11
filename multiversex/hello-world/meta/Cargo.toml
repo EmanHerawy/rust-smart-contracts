@@ -1,0 +1,10 @@
+[package]
+name = "hello-world-meta"
+version = "0.0.0"
+edition = "2021"
+publish = false
+[dependencies.hello-world]
+path = ".."
+
+[dependencies.multiversx-sc-meta]
+version = "0.43.4"
