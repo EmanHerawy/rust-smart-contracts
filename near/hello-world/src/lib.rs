@@ -1,10 +1,14 @@
 
 use near_sdk::{AccountId};
 use near_sdk::{env, near_bindgen};
+use near_sdk::borsh::{self, BorshDeserialize, BorshSerialize};
+
 /**When writing smart contracts, the pattern is to have a struct with an associated impl
 where you write the core logic into functions. It’s actually common in Rust to have this
 pattern elsewhere. */
+// the trait `BorshSerialize` is not implemented for `Contract`
 #[near_bindgen]
+#[derive(BorshSerialize, BorshDeserialize)]
 pub struct Contract{
 // storage 
 pub last_caller:AccountId,
@@ -16,6 +20,8 @@ impl Default for Contract{
     }
 }
 
+
+
 pub trait ContractTraits{
 
     fn init(msg: String)->Self;
@@ -23,8 +29,6 @@ pub trait ContractTraits{
     fn get_last_caller(&self) ->AccountId;
     fn get_last_message(&self) ->String;
 }
-
-
 #[near_bindgen]
 impl ContractTraits for Contract{
     #[init]
